@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAP 84 — Inventário Arquetípico de Personalidade</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#fafaf8;color:#111;line-height:1.6}
+.wrap{max-width:740px;margin:0 auto;padding:1.5rem 1rem}
+.hdr{text-align:center;margin-bottom:1.5rem}
+.hdr h1{font-size:22px;font-weight:500;color:#111;margin-bottom:4px}
+.hdr p{font-size:14px;color:#666;line-height:1.5}
+.escala{background:#f5f5f0;border:0.5px solid #ddd;border-radius:12px;padding:.9rem 1.1rem;margin-bottom:1.25rem}
+.escala p{font-size:12px;font-weight:500;color:#666;margin-bottom:8px}
+.eg{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.ei{text-align:center;font-size:11px;color:#666;line-height:1.4}
+.en{display:block;font-size:17px;font-weight:500;color:#111}
+.bloco-hdr{font-size:11px;font-weight:500;color:#999;text-transform:uppercase;letter-spacing:.07em;margin:1.75rem 0 .75rem;padding-bottom:5px;border-bottom:0.5px solid #ddd}
+.af{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:9px 0;border-bottom:0.5px solid #eee}
+.af:last-child{border-bottom:none}
+.af-l{display:flex;align-items:flex-start;gap:7px}
+.af-n{font-size:11px;font-weight:500;color:#aaa;min-width:20px;padding-top:2px}
+.af-t{font-size:13px;color:#111;line-height:1.55}
+.rg{display:flex;gap:3px}
+.rg input{display:none}
+.rg label{width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;border:0.5px solid #ccc;border-radius:6px;cursor:pointer;color:#666;transition:all .12s;user-select:none}
+.rg input:checked+label{background:#B8860B;border-color:#B8860B;color:#fff}
+.rg label:hover{background:#f5f5f0}
+.btn-calc{display:block;width:100%;padding:13px;margin-top:1.5rem;background:#B8860B;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:500;cursor:pointer;transition:opacity .15s}
+.btn-calc:hover{opacity:.87}
+.btn-calc:disabled{opacity:.45;cursor:not-allowed}
+.prog{font-size:12px;color:#aaa;text-align:center;margin-top:7px}
+.alrt{background:#fff8e1;border:0.5px solid #B8860B;border-radius:8px;padding:9px 13px;font-size:13px;color:#6B3A2A;margin-bottom:1rem;display:none}
+.res{display:none;margin-top:1.75rem}
+.res-t{font-size:18px;font-weight:500;color:#111;text-align:center;margin-bottom:1.25rem}
+.podio{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:1.25rem}
+.pc{background:#f5f5f0;border:0.5px solid #ddd;border-radius:12px;padding:11px 9px;text-align:center}
+.pc.p1{border:2px solid #B8860B}
+.pm{font-size:11px;font-weight:500;color:#B8860B;margin-bottom:3px}
+.pa{font-size:13px;font-weight:500;color:#111;margin-bottom:2px}
+.pf{font-size:11px;color:#aaa;margin-bottom:5px}
+.ps{font-size:22px;font-weight:500;color:#B8860B}
+.pmax{font-size:10px;color:#aaa}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:1.25rem}
+.fcard{background:#f5f5f0;border:0.5px solid #ddd;border-radius:12px;padding:9px 11px}
+.ft{font-size:10px;font-weight:500;color:#aaa;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.fv{font-size:19px;font-weight:500;color:#111}
+.fmax{font-size:10px;color:#aaa}
+.bs{margin-bottom:1.25rem}
+.br{display:grid;grid-template-columns:88px 1fr 32px;align-items:center;gap:7px;margin-bottom:5px}
+.bn{font-size:11px;color:#111;font-weight:500;text-align:right}
+.bt{background:#ddd;border-radius:3px;height:9px;overflow:hidden}
+.bf{height:100%;border-radius:3px;background:#B8860B;transition:width .5s}
+.bv{font-size:11px;color:#888;text-align:right}
+.ibox{background:#f5f5f0;border:0.5px solid #ddd;border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.9rem}
+.ia{font-size:14px;font-weight:500;color:#111;margin-bottom:2px}
+.if{font-size:11px;color:#B8860B;margin-bottom:7px}
+.it{font-size:13px;color:#555;line-height:1.6}
+.btn-ref{display:block;width:100%;padding:9px;margin-top:.75rem;background:transparent;color:#666;border:0.5px solid #ccc;border-radius:12px;font-size:13px;cursor:pointer}
+.btn-ref:hover{background:#f5f5f0}
+@media(max-width:500px){.podio{grid-template-columns:1fr}.rg label{width:26px;height:26px;font-size:11px}.af{grid-template-columns:1fr}.rg{margin-top:6px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hdr">
+  <h1>IAP 84</h1>
+  <p>Inventário Arquetípico de Personalidade<br>Responda todas as 84 afirmações para descobrir seus arquétipos dominantes.</p>
+</div>
+<div class="escala">
+  <p>Com que frequência cada afirmação descreve seu modo de ser?</p>
+  <div class="eg">
+    <div class="ei"><span class="en">1</span>Quase nunca</div>
+    <div class="ei"><span class="en">2</span>Raramente</div>
+    <div class="ei"><span class="en">3</span>Às vezes</div>
+    <div class="ei"><span class="en">4</span>Geralmente</div>
+    <div class="ei"><span class="en">5</span>Quase sempre</div>
+  </div>
+</div>
+<div id="alrt" class="alrt"></div>
+<div id="form"></div>
+<button class="btn-calc" id="btnCalc" onclick="calcular()" disabled>Ver meus arquétipos dominantes</button>
+<div class="prog" id="prog">0 de 84 respondidas</div>
+<div class="res" id="res">
+  <div class="res-t">Seu mapa arquetípico</div>
+  <div class="podio" id="podio"></div>
+  <div class="fg" id="fg"></div>
+  <div class="bs" id="bs"></div>
+  <div id="interp"></div>
+  <button class="btn-ref" onclick="refazer()">Refazer o inventário</button>
+</div>
+</div>
+<script>
+const AF=["Quando meu trabalho é criticado, sinto como se eu mesmo fosse criticado.","Sinto que o mundo é, no fundo, um lugar seguro.","Acredito que, no fundo, as coisas tendem a se resolver bem.","O fim de ciclos me aterroriza e ao mesmo tempo me libera.","Esforço-me constantemente para separar ilusão de verdade nas minhas próprias percepções.","Sonhos e visões são tão reais para mim quanto os fatos do mundo concreto.","Coloco as necessidades dos outros antes das minhas com frequência.","Tenho dificuldade em dizer não quando alguém precisa de mim.","Reconheço que às vezes uso a objetividade para me distanciar do que estou sentindo.","Confio no processo da vida sem precisar controlar todos os resultados.","Costumo presumir boa intenção nas pessoas antes que haja razão concreta.","Tomo decisões considerando o impacto no bem coletivo, não apenas no meu.","A mudança de perspectiva interna é capaz de transformar situações externas.","Às vezes percebo que preciso do outro de um modo que vai além do amor — é necessidade.","O jogo e a brincadeira têm lugar real e legítimo na minha vida adulta.","Encontro alegria e humor genuínos mesmo em situações difíceis.","Tenho dificuldade em pedir ajuda — prefiro resolver as coisas sozinho.","Busco compreender completamente uma situação antes de reagir a ela.","O sofrimento alheio me afeta intensamente.","Às vezes minha necessidade de análise paralisa minha capacidade de agir.","Percebo que às vezes saboto coisas boas antes que elas terminem por conta própria.","Minhas maiores perdas me ensinaram mais do que qualquer conquista.","Pertencer completamente a uma identidade ou grupo me parece limitar quem posso ser.","A objetividade e o desapego emocional são valores centrais para mim.","Minha força interior me permite superar obstáculos que muitos desistem de enfrentar.","Rituais e práticas simbólicas têm real significado e efeito na minha vida.","Minha maior sabedoria veio de perdas profundas, não de conquistas.","Sinto solidariedade profunda com quem é excluído ou marginalizado.","Tenho dificuldade em me comprometer por receio de perder minha liberdade.","Procuro governar minha própria vida com soberania e responsabilidade genuína.","Percebo conexões e padrões que outras pessoas frequentemente não percebem.","Tenho dificuldade em confiar plenamente, mesmo quando há razões objetivas para isso.","Tenho dificuldade com frieza emocional e distanciamento nos vínculos que importam.","Carrego um senso de que fui prejudicado injustamente em algum momento importante.","Reconheço quando o controle que exerço sobre algo está baseado em ansiedade, não em sabedoria.","Já me sabotei em processos criativos por medo do julgamento que viria com a conclusão.","Receber atenção e cuidado dos outros me gera certo desconforto.","Às vezes percebo que entro em modo de batalha mesmo quando a situação não exige isso.","Às vezes percebo que uso meu conhecimento sobre as pessoas para influenciá-las de formas sutis.","Tenho uma necessidade profunda de criar, expressar e manifestar.","Sinto que meu papel natural é transformar e curar.","Tenho um senso aguçado para perceber quando alguém não é genuíno.","Gosto de questionar estruturas excessivamente sérias com leveza e irreverência.","Costumo estabelecer limites claros quando alguém os ultrapassa.","Às vezes destruo o que construí — relacionamentos, projetos, identidades.","Sinto a vida como uma experiência essencialmente relacional e estética.","Tenho mais ideias do que tempo para realizá-las.","Já percebi que às vezes me movo por busca genuína e às vezes por fuga.","Acredito que toda morte carrega em si a semente de um renascimento.","Valorizo minha independência acima da maioria das outras coisas.","A beleza — da natureza, da arte, das pessoas — me toca profundamente.","Minha alegria não é superficial — ela coexiste com profundidade genuína.","Sinto atração por desconstruir sistemas, crenças e estruturas que parecem falsas.","O caos e a falta de estrutura me perturbam significativamente.","Já encontrei sabedoria em momentos de pura leveza que ensinamentos sérios não alcançaram.","Costumo dar o benefício da dúvida mesmo quando há sinais de que alguém age com má intenção.","Minha própria vida é a obra mais importante que já criei.","Minha identidade está fortemente ligada ao papel de cuidador ou apoiador.","Quando me apaixono por algo ou alguém, me entrego completamente.","Tenho capacidade natural de organizar pessoas e recursos em torno de um objetivo comum.","Cuido ativamente da esfera de influência que tenho, como quem cuida de um reino.","Reconheço com clareza quando um ciclo chegou ao fim — mesmo que doa encerrar.","Minha fé nos processos da vida me sustenta mesmo em momentos muito difíceis.","Acredito que a realidade interior e exterior estão profundamente interconectadas.","Minha presença parece catalisar mudanças nas pessoas ao meu redor.","Às vezes sinto ressentimento por dar muito e receber pouco em troca.","A sabedoria que importa nasce da experiência vivida, não apenas do que foi estudado.","Soluções simples e diretas me parecem mais verdadeiras do que análises complexas.","Às vezes uso o humor para não ser completamente visto na minha profundidade.","Não consigo ficar passivo diante de uma injustiça evidente.","A separação ou perda de quem amo me afeta de forma muito intensa.","Quando acredito em algo, luto por isso mesmo diante de grandes dificuldades.","Às vezes sinto que ninguém cuida de mim da forma que realmente preciso.","Acredito que a coragem de defender o que é certo é uma virtude essencial.","Sinto inquietação quando fico muito tempo preso na mesma situação ou lugar.","Quando não estou criando nada, sinto que algo essencial em mim está ausente.","Acredito que servir genuinamente aos outros é profundamente significativo.","O conhecimento que não transforma concretamente a vida não me satisfaz.","Minha jornada interior importa tanto quanto minhas conquistas no mundo externo.","Vivo minhas relações e experiências com grande intensidade emocional.","Já me peguei sabotando relações por medo antecipado de ser abandonado.","Busco autenticidade mesmo que isso signifique ir contra o esperado pelo grupo.","Às vezes me pego minimizando ou negando problemas que mereceriam mais atenção.","Tenho facilidade em assumir posições de liderança."];
+const GAB={"CR":[1,6,36,40,47,57,76],"IN":[2,3,11,56,63,68,83],"DE":[4,21,27,45,49,53,62],"SA":[5,9,18,20,24,67,78],"CA":[7,8,19,37,58,66,77],"BO":[10,15,16,43,52,55,69],"GO":[12,30,35,54,60,61,84],"MA":[13,26,31,39,41,64,65],"AM":[14,33,46,51,59,71,80],"GU":[17,25,38,44,70,72,74],"OR":[22,28,32,34,42,73,81],"EX":[23,29,48,50,75,79,82]};
+const META={
+IN:{nome:"Inocente",fase:"Preparação",txt:"Você opera a partir de uma confiança fundamental na bondade da vida. Sua dádiva é a esperança genuína e a capacidade de ver possibilidades onde outros veem obstáculos. O desafio é desenvolver discernimento sem perder a fé."},
+OR:{nome:"Órfão",fase:"Preparação",txt:"Você carrega a sabedoria nascida da ferida. Sua empatia é profunda — você compreende a dor do outro porque conhece a sua. O desafio é transformar a vigilância permanente em confiança seletiva e sábia."},
+GU:{nome:"Guerreiro",fase:"Preparação",txt:"Você tem força, disciplina e coragem para lutar pelo que importa. Sua energia é direcionada e poderosa. O desafio é descobrir pelo que realmente vale lutar — e aprender quando é hora de pousar a espada."},
+CA:{nome:"Caridoso",fase:"Preparação",txt:"Você ama e serve com generosidade genuína. Sua capacidade de cuidar é uma dádiva real. O desafio é aprender a receber com a mesma abertura com que oferece — e cuidar de si mesmo com igual dedicação."},
+EX:{nome:"Explorador",fase:"Jornada",txt:"Você está em busca constante — de si mesmo, de sentido, de autenticidade. Sua curiosidade é um recurso poderoso. O desafio é distinguir quando está se movendo em direção a algo e quando está fugindo de algo."},
+DE:{nome:"Destruidor",fase:"Jornada",txt:"Você tem a capacidade de soltar o que não serve mais e atravessar transformações radicais. Sua sabedoria nasceu de perdas reais. O desafio é transformar a destrutividade compulsiva em metamorfose consciente e intencional."},
+AM:{nome:"Amante",fase:"Jornada",txt:"Você vive com intensidade e se entrega plenamente. Sua capacidade de conexão profunda é rara. O desafio é amar a partir da plenitude — não da carência — e encontrar em si mesmo o que busca no outro."},
+CR:{nome:"Criador",fase:"Jornada",txt:"Você tem uma necessidade profunda de expressar e manifestar. Sua singularidade é um presente real. O desafio é separar seu valor do valor do que produz — e criar por alegria e expressão genuína, não para provar algo."},
+GO:{nome:"Governante",fase:"Retorno",txt:"Você assume responsabilidade e tem capacidade natural de liderança. Sua força está na soberania genuína. O desafio é distinguir autoridade sábia de controle ansioso — e governar a si mesmo antes de tentar governar o mundo."},
+MA:{nome:"Mago",fase:"Retorno",txt:"Você percebe padrões invisíveis e tem capacidade de transformar. Sua presença catalisa mudanças. O desafio é usar esse poder para libertar — a si mesmo e aos outros — em vez de vincular ou controlar."},
+SA:{nome:"Sábio",fase:"Retorno",txt:"Você busca a verdade com profundidade genuína. Seu discernimento é um recurso poderoso. O desafio é fazer a sabedoria descer do observatório mental para o corpo e o cotidiano — encarnar o que sabe, não apenas compreendê-lo."},
+BO:{nome:"Bobo",fase:"Retorno",txt:"Você tem a dádiva da alegria genuína e da espontaneidade. Sua leveza é uma forma real de sabedoria. O desafio é distinguir a alegria que liberta da leveza que protege — e permitir ser completamente visto na sua profundidade."},
+};
+const ORDEM=["IN","OR","GU","CA","EX","DE","AM","CR","GO","MA","SA","BO"];
+const BLOCOS=[{t:"Afirmações 1 a 28",r:[0,27]},{t:"Afirmações 29 a 56",r:[28,55]},{t:"Afirmações 57 a 84",r:[56,83]}];
+const resps=new Array(84).fill(null);
+function renderForm(){
+  let h='';
+  for(const b of BLOCOS){
+    h+='<div class="bloco-hdr">'+b.t+'</div>';
+    for(let i=b.r[0];i<=b.r[1];i++){
+      const n=i+1;
+      let rg='';
+      for(let v=1;v<=5;v++) rg+='<input type="radio" name="q'+n+'" id="q'+n+'v'+v+'" value="'+v+'" onchange="mark('+n+','+v+')"><label for="q'+n+'v'+v+'">'+v+'</label>';
+      h+='<div class="af"><div class="af-l"><span class="af-n">'+n+'</span><span class="af-t">'+AF[i]+'</span></div><div class="rg" id="rg'+n+'">'+rg+'</div></div>';
+    }
+  }
+  document.getElementById('form').innerHTML=h;
+}
+function mark(n,v){resps[n-1]=v;prog();}
+function prog(){
+  const done=resps.filter(function(x){return x!==null;}).length;
+  document.getElementById('prog').textContent=done+' de 84 respondidas';
+  document.getElementById('btnCalc').disabled=done<84;
+}
+function calcular(){
+  var miss=[];
+  for(var i=0;i<84;i++) if(resps[i]===null) miss.push(i+1);
+  if(miss.length){
+    var al=document.getElementById('alrt');
+    al.style.display='block';
+    al.innerHTML='<strong>Atenção:</strong> '+miss.length+' afirmação(ões) sem resposta: '+miss.slice(0,12).join(', ')+(miss.length>12?'…':'');
+    document.getElementById('rg'+miss[0]).scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  document.getElementById('alrt').style.display='none';
+  var esc={};
+  for(var i=0;i<ORDEM.length;i++){var sig=ORDEM[i];esc[sig]=GAB[sig].reduce(function(acc,n){return acc+(resps[n-1]||0);},0);}
+  var ord=ORDEM.slice().sort(function(a,b){return esc[b]-esc[a];});
+  var top3=ord.slice(0,3);
+  var medals=['1º — Arquétipo dominante','2º — Muito ativo','3º — Ativo'];
+  var podHtml='';
+  for(var i=0;i<3;i++){var s=top3[i];podHtml+='<div class="pc '+(i===0?'p1':'')+'"><div class="pm">'+medals[i]+'</div><div class="pa">'+META[s].nome+'</div><div class="pf">'+META[s].fase+'</div><div class="ps">'+esc[s]+'<span class="pmax"> /35</span></div></div>';}
+  document.getElementById('podio').innerHTML=podHtml;
+  var fases={Preparação:['IN','OR','GU','CA'],Jornada:['EX','DE','AM','CR'],Retorno:['GO','MA','SA','BO']};
+  var faseKeys=Object.keys(fases);
+  var fgHtml='';
+  for(var i=0;i<faseKeys.length;i++){var f=faseKeys[i];var soma=fases[f].reduce(function(s,a){return s+esc[a];},0);fgHtml+='<div class="fcard"><div class="ft">'+f+'</div><div class="fv">'+soma+'<span class="fmax"> /140</span></div></div>';}
+  document.getElementById('fg').innerHTML=fgHtml;
+  var bh='<div style="font-size:12px;font-weight:500;color:#888;margin-bottom:8px">Todos os arquétipos</div>';
+  for(var i=0;i<ORDEM.length;i++){var s=ORDEM[i];var pct=Math.round((esc[s]/35)*100);bh+='<div class="br"><div class="bn">'+META[s].nome+'</div><div class="bt"><div class="bf" style="width:'+pct+'%"></div></div><div class="bv">'+esc[s]+'</div></div>';}
+  document.getElementById('bs').innerHTML=bh;
+  var iHtml='<div style="font-size:12px;font-weight:500;color:#888;margin-bottom:8px">Interpretação dos três dominantes</div>';
+  for(var i=0;i<3;i++){var s=top3[i];iHtml+='<div class="ibox"><div class="ia">'+META[s].nome+'</div><div class="if">'+META[s].fase+'</div><div class="it">'+META[s].txt+'</div></div>';}
+  document.getElementById('interp').innerHTML=iHtml;
+  document.getElementById('form').style.display='none';
+  document.getElementById('btnCalc').style.display='none';
+  document.getElementById('prog').style.display='none';
+  document.getElementById('res').style.display='block';
+  document.getElementById('res').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function refazer(){
+  resps.fill(null);
+  document.querySelectorAll('input[type=radio]').forEach(function(r){r.checked=false;});
+  document.getElementById('form').style.display='block';
+  document.getElementById('btnCalc').style.display='block';
+  document.getElementById('prog').style.display='block';
+  document.getElementById('res').style.display='none';
+  prog();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderForm();
+prog();
+</script>
+</body>
+</html>
